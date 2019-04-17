@@ -17,7 +17,7 @@ class UMengAnalytics {
       {int policy,
       bool reportCrash,
       bool encrypt,
-      double interval,
+      int interval,
       String channel,
       bool logEnable}) {
     Map<String, dynamic> args = {"key": key};
