@@ -3,6 +3,8 @@ package pedia.flutterumenganalytics;
 import android.app.Activity;
 import android.content.Context;
 import com.umeng.analytics.*;
+import com.umeng.commonsdk.UMConfigure;
+
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -42,11 +44,15 @@ public class FlutterUmengAnalyticsPlugin implements MethodCallHandler {
   }
 
   public void init(MethodCall call, Result result) {
-    MobclickAgent.UMAnalyticsConfig config =
-        new MobclickAgent.UMAnalyticsConfig(
-            (Context) activity, (String) call.argument("key"), "default");
+    UMConfigure.init((Context) activity, (String) call.argument("key"), (String) call.argument("channel"),
+            (Integer) call.argument("deviceType"), (String) call.argument("pushSecret"));
 
-    MobclickAgent.startWithConfigure(config);
+    UMConfigure.setEncryptEnabled((Boolean) call.argument("encrypt"));
+    UMConfigure.setLogEnabled((Boolean) call.argument("logEnable"));
+
+    MobclickAgent.setScenarioType((Context) activity, (Integer) call.argument("policy"));
+    MobclickAgent.setSessionContinueMillis((Context) activity, (Integer) call.argument("interval"));
+
     result.success(true);
   }
 }

@@ -5,10 +5,12 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url 'https://dl.bintray.com/umsdk/release' }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'        
+        classpath 'com.android.tools.build:gradle:3.0.1'
+
     }
 }
 
@@ -16,6 +18,7 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://dl.bintray.com/umsdk/release' }
     }
 }
 
@@ -34,6 +37,7 @@ android {
     }
 
     dependencies {
-        // api  'com.umeng.analytics:analytics:latest.integration'
+        compile  'com.umeng.umsdk:analytics:7.5.4'
+        compile  'com.umeng.umsdk:common:1.5.4'
     }
 }
