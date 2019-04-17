@@ -45,10 +45,10 @@ public class FlutterUmengAnalyticsPlugin implements MethodCallHandler {
 
   public void init(MethodCall call, Result result) {
     UMConfigure.init((Context) activity, (String) call.argument("key"), (String) call.argument("channel"),
-            (Integer) call.argument("deviceType"), (String) call.argument("pushSecret"));
+            UMConfigure.DEVICE_TYPE_PHONE, null);
 
     UMConfigure.setEncryptEnabled((Boolean) call.argument("encrypt"));
-    UMConfigure.setLogEnabled((Boolean) call.argument("logEnable"));
+    UMConfigure.setLogEnabled(false);
 
     MobclickAgent.setScenarioType((Context) activity, (Integer) call.argument("policy"));
     MobclickAgent.setSessionContinueMillis((Context) activity, (Integer) call.argument("interval"));
