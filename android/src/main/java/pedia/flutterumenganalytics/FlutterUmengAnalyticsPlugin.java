@@ -50,7 +50,7 @@ public class FlutterUmengAnalyticsPlugin implements MethodCallHandler {
     UMConfigure.setEncryptEnabled((Boolean) call.argument("encrypt"));
     UMConfigure.setLogEnabled(false);
     MobclickAgent.setScenarioType((Context) activity, MobclickAgent.EScenarioType.E_DUM_NORMAL);
-    MobclickAgent.setSessionContinueMillis((Long) call.argument("interval"));
+    MobclickAgent.setSessionContinueMillis(((Integer) call.argument("interval")).longValue());
 
     result.success(true);
   }
