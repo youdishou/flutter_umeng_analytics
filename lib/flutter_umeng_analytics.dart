@@ -18,6 +18,7 @@ class UMengAnalytics {
       bool reportCrash,
       bool encrypt,
       double interval,
+      String channel,
       bool logEnable}) {
     Map<String, dynamic> args = {"key": key};
 
@@ -26,6 +27,7 @@ class UMengAnalytics {
     if (encrypt != null) args["encrypt"] = encrypt;
     if (interval != null) args["interval"] = interval;
     if (logEnable != null) args["logEnable"] = logEnable;
+    if (channel != null) args["channel"] = logEnable;
 
     _channel.invokeMethod("init", args);
     return new Future.value(true);
